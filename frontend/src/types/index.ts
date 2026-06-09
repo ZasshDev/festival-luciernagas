@@ -13,6 +13,8 @@ export interface Park {
   servicios: string;
   horario: string;
   hasCabins: boolean;
+  stockCabanas?: number;
+  stockCamping?: number;
   lat: number;
   lng: number;
 }
@@ -25,7 +27,7 @@ export interface Reservation {
   fechaFin: string;
   numPersonas: number;
   tipo: 'CABIN' | 'CAMPING';
-  status: 'ACTIVE' | 'CANCELLED';
+  status: 'ACTIVE' | 'CANCELLED' | 'ARRIVED';
   codigo?: string;
   park?: { nombre: string };
   user?: { nombre: string; apellidos: string; email: string };

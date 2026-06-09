@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InteractiveMap from '../components/Map';
 import { useParks } from '../hooks/useParks';
-import { Park } from '../types';
+import { Trees, Users, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trees, Tent, Users, MapPin } from 'lucide-react';
 
 export default function Home() {
   const { parks, loading } = useParks();
