@@ -1,0 +1,215 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+% ---------------------------------------------------
+% PORTADA
+% ---------------------------------------------------
+\title[Festival de las Luciérnagas]{Sistema Integral de Reservaciones: Festival de las Luciérnagas}
+\subtitle{Proyecto de Desarrollo de Software Seguro y Escalable}
+\author[Equipo de Desarrollo]{Empresa: LuciDev Solutions \\ \vspace{0.3cm} Integrantes: \\ Zassh \and Equipo de Desarrollo}
+\institute[LuciDev]{Universidad / Instituto}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Índice}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------
+% REQUERIMIENTOS
+% ---------------------------------------------------
+\section{Requerimientos}
+\begin{frame}{Requerimientos del Sistema}
+  \textbf{Requerimientos Funcionales:}
+  \begin{itemize}
+      \item Registro y autenticación de usuarios (Clientes y Administradores).
+      \item Visualización de santuarios con mapas interactivos.
+      \item Sistema de reservas de cabañas y zonas de camping.
+      \item Generación de Pases de Acceso en PDF con código QR.
+      \item Dashboard de administrador para validar ingresos mediante escáner QR.
+  \end{itemize}
+  \vspace{0.3cm}
+  \textbf{Requerimientos No Funcionales:}
+  \begin{itemize}
+      \item \textbf{Seguridad:} Contraseñas encriptadas, protección de rutas y prevención de inyecciones.
+      \item \textbf{Usabilidad:} Interfaz intuitiva y estética con modo oscuro (Premium Design).
+      \item \textbf{Rendimiento:} Tiempos de carga menores a 2 segundos mediante compilación optimizada (Vite/React).
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+% PROPUESTA DE VALOR
+% ---------------------------------------------------
+\section{Propuesta de Valor}
+\begin{frame}{Propuesta de Valor del Proyecto}
+  \begin{block}{Innovación Tecnológica y Ecológica}
+    El \textbf{Festival de las Luciérnagas} ofrece una plataforma digital que moderniza la gestión turística de áreas naturales protegidas. 
+  \end{block}
+  \vspace{0.2cm}
+  Nuestra propuesta radica en:
+  \begin{itemize}
+      \item \textbf{Digitalización Cero Papel:} Entradas 100\% digitales mediante códigos QR y PDFs generados on-the-fly.
+      \item \textbf{Control de Aforo Seguro:} Evita la sobreexplotación de los santuarios al manejar inventarios de reservas en tiempo real.
+      \item \textbf{Experiencia Premium:} Un diseño de interfaz inmersivo que captura la magia de las luciérnagas antes de llegar al bosque.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+% CICLO DE VIDA
+% ---------------------------------------------------
+\section{Ciclo de Vida}
+\begin{frame}{Ciclo de Vida del Software}
+  Se adoptó un \textbf{Modelo Iterativo e Incremental}, permitiendo entregas funcionales continuas.
+  \vspace{0.3cm}
+  \begin{enumerate}
+      \item \textbf{Análisis:} Identificación del problema de sobrecupo en santuarios.
+      \item \textbf{Diseño:} Creación de prototipos UI/UX y modelado de base de datos relacional.
+      \item \textbf{Implementación:} Desarrollo del backend (Node.js/Prisma) y frontend (React).
+      \item \textbf{Pruebas:} Validación de roles, autenticación y escaneo de QR.
+      \item \textbf{Despliegue:} Configuración en VPS (Ubuntu) utilizando PM2 y Nginx.
+      \item \textbf{Mantenimiento:} Refactorizaciones basadas en la retroalimentación.
+  \end{enumerate}
+\end{frame}
+
+% ---------------------------------------------------
+% METODOLOGÍA
+% ---------------------------------------------------
+\section{Metodología}
+\begin{frame}{Metodología(s) Utilizada(s)}
+  Se implementó \textbf{Scrum} adaptado para equipos ágiles pequeños:
+  \begin{itemize}
+      \item \textbf{Sprints:} Ciclos de desarrollo de 1 a 2 semanas.
+      \item \textbf{Product Backlog:} Historias de usuario claras (e.g., "Como admin, quiero escanear un QR para dar acceso").
+      \item \textbf{Daily Standups:} Revisiones de progreso rápidas.
+  \end{itemize}
+  \vspace{0.3cm}
+  Prácticas Complementarias:
+  \begin{itemize}
+      \item \textbf{Pair Programming:} Especialmente durante la integración de pasarelas y seguridad.
+      \item \textbf{Control de Versiones:} Uso de Git/GitHub con flujos de trabajo basados en ramas (Feature Branches).
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+% SEGURIDAD
+% ---------------------------------------------------
+\section{Seguridad}
+\begin{frame}{Aspectos de Seguridad Considerados}
+  La plataforma implementa estándares modernos de seguridad web:
+  \vspace{0.2cm}
+  \begin{itemize}
+      \item \textbf{Autenticación y Autorización:} Uso de JSON Web Tokens (JWT) almacenados de forma segura y validación estricta de Roles (RBAC).
+      \item \textbf{Protección de Datos:} Encriptación de contraseñas usando \texttt{bcrypt} (costo factor 12).
+      \item \textbf{Protección contra Vulnerabilidades Comunes:}
+      \begin{itemize}
+          \item Sanitización de entradas (prevención de XSS y SQL Injection) a través del ORM Prisma y validadores como Zod.
+          \item CORS configurado estrictamente.
+      \end{itemize}
+      \item \textbf{Restricciones de Hardware:} Manejo de errores gracefully en la API del escáner de cámara bajo contextos no-HTTPS.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+% REFACTORIZACIONES Y CLEAN CODE
+% ---------------------------------------------------
+\section{Código Limpio}
+\begin{frame}{Refactorizaciones y Código Limpio}
+  El proyecto mantiene altos estándares de calidad de código:
+  \begin{block}{Principios Aplicados}
+      \begin{itemize}
+          \item \textbf{DRY (Don't Repeat Yourself):} Creación de Hooks personalizados (\texttt{useAuth}, \texttt{useParks}) y componentes reutilizables (Botones, Tarjetas).
+          \item \textbf{Separation of Concerns:} Frontend separado del Backend. Backend estructurado en arquitectura por capas (Controladores, Servicios, Rutas).
+          \item \textbf{Tipado Fuerte:} Uso extensivo de TypeScript para prevenir errores en tiempo de ejecución.
+      \end{itemize}
+  \end{block}
+  \vspace{0.2cm}
+  \textbf{Ejemplo de Refactorización:} 
+  Se reemplazó una tabla genérica de reservas por un diseño de "Tarjetas de Pase" con descarga directa a PDF (\texttt{jsPDF}), separando la lógica de renderizado del manejo de archivos.
+\end{frame}
+
+% ---------------------------------------------------
+% IMPLEMENTACIÓN
+% ---------------------------------------------------
+\section{Implementación}
+\begin{frame}{Muestra de la Implementación}
+  \begin{center}
+      \textit{(En la presentación en vivo, realizar la demostración del software aquí)}
+  \end{center}
+  \vspace{0.2cm}
+  \textbf{Puntos clave a demostrar:}
+  \begin{enumerate}
+      \item Inicio de sesión con cuenta de Administrador.
+      \item Interfaz gráfica y renderizado del mapa.
+      \item Generación de una reserva de prueba.
+      \item Visualización de la reserva en el perfil del cliente.
+      \item Descarga del Pase Mágico en formato PDF.
+      \item Escaneo del código QR (o ingreso manual del ID) en el panel de administrador para confirmar la llegada.
+  \end{enumerate}
+\end{frame}
+
+% ---------------------------------------------------
+% BITÁCORA
+% ---------------------------------------------------
+\section{Bitácora}
+\begin{frame}{Bitácora de Trabajo en Equipo}
+  \begin{table}
+      \centering
+      \resizebox{\textwidth}{!}{%
+      \begin{tabular}{@{}llp{6cm}@{}}
+      \toprule
+      \textbf{Fecha} & \textbf{Fase} & \textbf{Actividad Principal} \\ \midrule
+      Semana 1 & Planificación & Definición de requerimientos y diseño de base de datos (Prisma). \\
+      Semana 2 & Backend & Desarrollo de la API REST, autenticación JWT y roles. \\
+      Semana 3 & Frontend UI & Maquetación con Tailwind CSS, integración de Framer Motion. \\
+      Semana 4 & Integración & Conexión Frontend-Backend, validación de estado de reservas. \\
+      Semana 5 & Refinamiento & Generación de PDF (jsPDF), escáner QR y fixes de HTTPS. \\
+      Semana 6 & Despliegue & Puesta en producción en Servidor VPS (Nginx + PM2). \\ \bottomrule
+      \end{tabular}%
+      }
+  \end{table}
+\end{frame}
+
+% ---------------------------------------------------
+% BIBLIOGRAFÍA
+% ---------------------------------------------------
+\section{Bibliografía}
+\begin{frame}{Bibliografía (Formato APA)}
+  \begin{thebibliography}{9}
+      \bibitem{react} 
+      Meta Platforms, Inc. (2024). \textit{React: The library for web and native user interfaces}. Recuperado de https://react.dev/
+      
+      \bibitem{prisma} 
+      Prisma Data, Inc. (2024). \textit{Prisma: Next-generation Node.js and TypeScript ORM}. Recuperado de https://www.prisma.io/
+      
+      \bibitem{tailwind} 
+      Wathan, A. (2024). \textit{Tailwind CSS: Rapidly build modern websites without ever leaving your HTML}. Recuperado de https://tailwindcss.com/
+      
+      \bibitem{martin}
+      Martin, R. C. (2008). \textit{Clean Code: A Handbook of Agile Software Craftsmanship}. Prentice Hall.
+      
+      \bibitem{sommerville}
+      Sommerville, I. (2015). \textit{Ingeniería de Software} (10ma ed.). Pearson.
+  \end{thebibliography}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+      \Huge \textbf{¡Gracias!} \\
+      \vspace{0.5cm}
+      \Large ¿Preguntas?
+  \end{center}
+\end{frame}
+
+\end{document}

@@ -74,12 +74,30 @@ export default function AdminDashboard() {
           <div className="w-full max-w-sm rounded-xl overflow-hidden border-2 border-dashed border-slate-600 bg-black aspect-square flex items-center justify-center">
             <Scanner onScan={(result) => handleScan(result[0].rawValue)} />
           </div>
+          
+          <div className="mt-6 w-full max-w-sm">
+            <p className="text-xs text-red-400 mb-3 text-center px-4">
+              Nota: La cámara requiere acceso local o HTTPS. Si no funciona, ingresa el código manual.
+            </p>
+            <input 
+              type="text" 
+              placeholder="Ej. d844fc8d-501c..."
+              className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors shadow-inner"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && e.currentTarget.value.trim()) {
+                  handleScan(e.currentTarget.value.trim());
+                  e.currentTarget.value = '';
+                }
+              }}
+            />
+          </div>
+
           {scanMessage && (
-            <div className={`mt-4 p-3 rounded-lg text-sm font-semibold w-full text-center ${scanMessage.includes('❌') ? 'bg-red-900/50 text-red-400 border border-red-800' : scanMessage.includes('✅') ? 'bg-green-900/50 text-green-400 border border-green-800' : 'bg-slate-800 text-slate-300'}`}>
+            <div className={`mt-4 p-3 rounded-lg text-sm font-semibold w-full max-w-sm text-center ${scanMessage.includes('❌') ? 'bg-red-900/50 text-red-400 border border-red-800' : scanMessage.includes('✅') ? 'bg-green-900/50 text-green-400 border border-green-800' : 'bg-slate-800 text-slate-300'}`}>
               {scanMessage}
             </div>
           )}
-          <p className="text-xs text-slate-500 mt-4 text-center">Apunta la cámara al código QR de la reserva para marcar la llegada del visitante.</p>
+          <p className="text-xs text-slate-500 mt-4 text-center max-w-xs">Apunta la cámara al código QR de la reserva o ingresa el ID manualmente.</p>
         </div>
       </section>
 

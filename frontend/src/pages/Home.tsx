@@ -49,8 +49,8 @@ export default function Home() {
               2026
             </h1>
           </div>
-          <h1 className="text-[12vw] md:text-[8vw] leading-[0.85] font-serif mb-8 text-white tracking-tighter drop-shadow-2xl relative z-10">
-            LUCI<span className="italic text-yellow-500 font-light">MAP</span>
+          <h1 className="text-[10vw] md:text-[6vw] leading-[0.85] font-serif mb-8 text-white tracking-tighter drop-shadow-2xl relative z-10">
+            FESTIVAL DE LAS <span className="italic text-yellow-500 font-light block mt-2 md:mt-4">LUCIÉRNAGAS</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 font-light mb-12 max-w-2xl mx-auto tracking-widest uppercase leading-relaxed relative z-10">
             Una inmersión mágica en los santuarios luminosos de México. 
