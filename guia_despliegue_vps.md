@@ -111,3 +111,24 @@ sudo systemctl restart nginx
 
 ## ¡Listo!
 Ahora, si visitas la IP de tu servidor desde el navegador, deberías ver la página principal de LuciMap. El sistema de registro, login y reservas interactuará correctamente con tu base de datos de producción a través de Nginx.
+
+---
+
+## Fase 4: Túnel Temporal HTTPS (Para Presentaciones)
+Si necesitas habilitar la cámara para el escáner QR durante tu presentación, es **obligatorio** acceder por `https://`. Para generar un enlace seguro temporal hacia tu servidor (sin comprar dominios), entra por SSH a tu VPS y usa una de estas opciones:
+
+### Opción A: Cloudflare Tunnel (Más estable, recomendada)
+Ejecuta esto en tu servidor para instalar y lanzar un túnel hacia tu Nginx (puerto 80):
+```bash
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+sudo dpkg -i cloudflared-linux-amd64.deb
+cloudflared tunnel --url http://localhost:80
+```
+*En la terminal te aparecerá un enlace parecido a `https://palabras-random.trycloudflare.com`. Usa ese enlace para tu presentación.*
+
+### Opción B: LocalTunnel (Súper rápido, usa Node.js)
+Como ya tienes npm, simplemente ejecuta:
+```bash
+npx localtunnel --port 80
+```
+*Te devolverá un enlace `https://xxxx.loca.lt`. (Nota: al abrirlo por primera vez, podría pedirte dar clic en un botón para confirmar que quieres entrar).*
