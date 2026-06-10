@@ -39,50 +39,48 @@ export default function MyReservations() {
     const doc = new jsPDF();
     
     // Configuración general
-    doc.setFillColor(15, 23, 42); // slate-900
+    doc.setFillColor(255, 255, 255); 
     doc.rect(0, 0, 210, 297, 'F');
     
     // Título principal
-    doc.setTextColor(253, 224, 71); // yellow-300
+    doc.setTextColor(0, 0, 0); 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(28);
-    doc.text("Festival de las Luciernagas", 105, 30, { align: "center" });
+    doc.text("Festival de las Luciérnagas", 105, 30, { align: "center" });
     
     // Subtítulo
-    doc.setTextColor(200, 200, 200);
+    doc.setTextColor(80, 80, 80);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(14);
-    doc.text("Pase de Acceso Magico", 105, 45, { align: "center" });
+    doc.text("Pase de Acceso", 105, 45, { align: "center" });
 
     // Cuadro de información
-    doc.setDrawColor(253, 224, 71);
+    doc.setDrawColor(0, 0, 0);
     doc.setLineWidth(0.5);
     doc.roundedRect(20, 60, 170, 100, 5, 5);
 
     // Datos de la reserva
-    doc.setTextColor(255, 255, 255);
+    doc.setTextColor(0, 0, 0);
     doc.setFontSize(16);
     doc.text(`Santuario: ${res.park?.nombre}`, 30, 75);
     
     doc.setFontSize(12);
-    doc.setTextColor(180, 180, 180);
+    doc.setTextColor(50, 50, 50);
     doc.text(`ID Reserva: ${res.codigo || res.id}`, 30, 90);
     doc.text(`Fechas: ${new Date(res.fechaInicio).toLocaleDateString()} al ${new Date(res.fechaFin).toLocaleDateString()}`, 30, 105);
     doc.text(`Visitantes: ${res.numPersonas} personas`, 30, 120);
-    doc.text(`Tipo de Estancia: ${res.tipo === 'CABIN' ? 'Cabana' : 'Camping'}`, 30, 135);
+    doc.text(`Tipo de Estancia: ${res.tipo === 'CABIN' ? 'Cabaña' : 'Camping'}`, 30, 135);
     doc.text(`Estado: ${res.status}`, 30, 150);
     
     // Agregar código QR al PDF
     const qrElement = document.getElementById(`qr-${res.id}`) as HTMLCanvasElement;
     if (qrElement) {
-      const qrDataUrl = qrElement.toDataURL("image/png");
-      doc.setFillColor(255, 255, 255);
-      doc.roundedRect(75, 180, 60, 60, 3, 3, 'F');
-      doc.addImage(qrDataUrl, 'PNG', 77, 182, 56, 56);
+      const qrDataUrl = qrElement.toDataURL("image/png", 1.0);
+      doc.addImage(qrDataUrl, 'PNG', 75, 180, 60, 60);
       
-      doc.setTextColor(253, 224, 71);
+      doc.setTextColor(0, 0, 0);
       doc.setFontSize(10);
-      doc.text("Presenta este codigo al llegar al santuario", 105, 250, { align: "center" });
+      doc.text("Presenta este código al llegar al santuario", 105, 250, { align: "center" });
     }
 
     doc.save(`Reserva_${res.codigo || res.id}.pdf`);
@@ -158,7 +156,8 @@ export default function MyReservations() {
                           <QRCodeCanvas
                             id={`qr-${res.id}`}
                             value={`Reserva:${res.codigo || res.id}|Parque:${res.park?.nombre}|Inicio:${res.fechaInicio}`}
-                            size={70}
+                            size={256}
+                            style={{ width: '70px', height: '70px' }}
                             level="H"
                           />
                         </div>
