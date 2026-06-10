@@ -31,8 +31,8 @@ export default function Home() {
       <section className="relative h-[80vh] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1508280756091-9bdd7ef1f463?q=80&w=2000&auto=format&fit=crop" 
-            alt="Bosque oscuro" 
+            src="/hero-bg.png" 
+            alt="Santuario de las luciérnagas" 
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div>
