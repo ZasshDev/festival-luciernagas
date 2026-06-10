@@ -13,8 +13,8 @@
 % ---------------------------------------------------
 \title[Festival de las Luciérnagas]{Sistema Integral de Reservaciones: Festival de las Luciérnagas}
 \subtitle{Proyecto de Desarrollo de Software Seguro y Escalable}
-\author[Equipo de Desarrollo]{Empresa: LuciDev Solutions \\ \vspace{0.3cm} Integrantes: \\ Zassh \and Equipo de Desarrollo}
-\institute[LuciDev]{Universidad / Instituto}
+\author[Zassh]{Desarrollador: Zassh}
+\institute[Desarrollo Independiente]{Proyecto de Desarrollo Independiente}
 \date{\today}
 
 \begin{document}
@@ -88,17 +88,17 @@
 % ---------------------------------------------------
 \section{Metodología}
 \begin{frame}{Metodología(s) Utilizada(s)}
-  Se implementó \textbf{Scrum} adaptado para equipos ágiles pequeños:
+  Se implementó \textbf{Agile para Desarrollador Único (Personal Kanban)}:
   \begin{itemize}
-      \item \textbf{Sprints:} Ciclos de desarrollo de 1 a 2 semanas.
-      \item \textbf{Product Backlog:} Historias de usuario claras (e.g., "Como admin, quiero escanear un QR para dar acceso").
-      \item \textbf{Daily Standups:} Revisiones de progreso rápidas.
+      \item \textbf{Desarrollo Iterativo:} Entregas funcionales diarias.
+      \item \textbf{Gestión de Tareas:} Flujo visual (To Do, In Progress, Done) para evitar cuellos de botella.
+      \item \textbf{Sprints Diarios:} Reevaluación de prioridades cada mañana.
   \end{itemize}
   \vspace{0.3cm}
   Prácticas Complementarias:
   \begin{itemize}
-      \item \textbf{Pair Programming:} Especialmente durante la integración de pasarelas y seguridad.
-      \item \textbf{Control de Versiones:} Uso de Git/GitHub con flujos de trabajo basados en ramas (Feature Branches).
+      \item \textbf{AI Pair Programming:} Uso de Inteligencia Artificial como asistente para agilizar la codificación, refactorizaciones y configuración del VPS.
+      \item \textbf{Control de Versiones:} Uso de Git/GitHub para respaldar iteraciones diarias.
   \end{itemize}
 \end{frame}
 
@@ -163,19 +163,20 @@
 % BITÁCORA
 % ---------------------------------------------------
 \section{Bitácora}
-\begin{frame}{Bitácora de Trabajo en Equipo}
+\begin{frame}{Bitácora de Desarrollo (1 Semana de Sprint)}
   \begin{table}
       \centering
       \resizebox{\textwidth}{!}{%
-      \begin{tabular}{@{}llp{6cm}@{}}
+      \begin{tabular}{@{}llp{6.5cm}@{}}
       \toprule
-      \textbf{Fecha} & \textbf{Fase} & \textbf{Actividad Principal} \\ \midrule
-      Semana 1 & Planificación & Definición de requerimientos y diseño de base de datos (Prisma). \\
-      Semana 2 & Backend & Desarrollo de la API REST, autenticación JWT y roles. \\
-      Semana 3 & Frontend UI & Maquetación con Tailwind CSS, integración de Framer Motion. \\
-      Semana 4 & Integración & Conexión Frontend-Backend, validación de estado de reservas. \\
-      Semana 5 & Refinamiento & Generación de PDF (jsPDF), escáner QR y fixes de HTTPS. \\
-      Semana 6 & Despliegue & Puesta en producción en Servidor VPS (Nginx + PM2). \\ \bottomrule
+      \textbf{Día} & \textbf{Fase} & \textbf{Actividad Principal} \\ \midrule
+      Miércoles (Día 1) & Planificación & Definición de requerimientos, setup del entorno y esquema de BD (Prisma). \\
+      Jueves (Día 2) & Backend Core & Desarrollo de API REST, autenticación JWT y roles. \\
+      Viernes (Día 3) & Frontend Base & Maquetación inicial con React y Tailwind CSS. \\
+      Fin de semana & Integración & Conexión Front-Back, lógica de reservas y mapas (Leaflet). \\
+      Lunes (Día 6) & UI Premium & Mejoras estéticas, SVG, animaciones (Framer Motion). \\
+      Martes (Día 7) & Despliegue & Generación de PDF, tests de escáner QR y fixes de HTTPS. \\
+      Miércoles (Hoy) & Producción & Puesta en producción final en Servidor VPS (Nginx/PM2). \\ \bottomrule
       \end{tabular}%
       }
   \end{table}
